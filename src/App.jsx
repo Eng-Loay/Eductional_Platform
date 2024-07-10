@@ -1,19 +1,22 @@
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import photo from "./assets/student.png";
-import Signin from "./Signin";
+import Form from "./Components/Form";
+import { NotFound } from "./Components/NotFound";
+import { Header } from "./Components/Header";
+import "primereact/resources/themes/saga-blue/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
+import "primeflex/primeflex.css";
+import Landing from "./Components/Landing";
 
 function App() {
   return (
-    <div className="bg-blue-100 h-screen flex items-center justify-center">
-      <div className="bg-white shadow-md rounded-lg flex w-3/4 max-w-4xl">
-        <div className="w-1/2 flex items-center justify-center p-6">
-          <img src={photo} alt="Student" className="max-w-full h-auto" />
-        </div>
-        <div className="w-1/2 p-8">
-          <Signin />
-        </div>
-      </div>
-    </div>
+    <Routes>
+      <Route path="/" element={<Landing />} />
+      <Route path="/form" element={<Form />} />
+      <Route path="/header" element={<Header />} />
+      <Route path="*" element={<NotFound />}></Route>
+    </Routes>
   );
 }
 

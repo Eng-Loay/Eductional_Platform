@@ -1,14 +1,13 @@
 import { useState } from "react";
-import google from "./assets/icon_google.png";
-import facebook from "./assets/icon_facebook.png";
-
+import google from "../assets/icon_google.png";
+import facebook from "../assets/icon_facebook.png";
 function Signin() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
   return (
     <>
-      <h2 className="text-blue-800 font-bold text-3xl mb-4 text-center">
+      <h2 className="text-blue-800 font-bold text-3xl mb-4 text-center whitespace-nowrap">
         Student Login
       </h2>
       <p className="text-grey-600 mb-6 text-center">
