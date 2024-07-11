@@ -10,7 +10,7 @@ export const Header = () => {
           <Navbar className="nav" />
           <input
             type="search"
-            className="nav search w-full text-end text-xs min-[400px]:text-center lg:text-center md:text-center sm:text-center  lg:w-[458px] md:w-[427px] sm:w-full "
+            className="nav search w-full text-end text-xs lg:text-2xl min-[400px]:text-center lg:text-center md:text-center sm:text-center  lg:w-[458px] md:w-[427px] sm:w-full "
             placeholder="Who do You Wish To Learn"
           />
         </div>
