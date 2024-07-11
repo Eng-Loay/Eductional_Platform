@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Header } from "./Header";
 import teacher from "../assets/teacher.png";
 import avatar from "../assets/Avatar.png";
+import { Fotter } from "./Fotter";
 const Landing = () => {
   return (
     <>
@@ -152,6 +153,7 @@ const Landing = () => {
         </div>
       </div>
       {/* End Teachers Section */}
+      <Fotter />
     </>
   );
 };
