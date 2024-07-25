@@ -8,12 +8,14 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 import Landing from "./Components/Landing";
+import Form2 from "./Components/Form2";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Landing />} />
       <Route path="/form" element={<Form />} />
+      <Route path="/form2" element={<Form2 />} />
       <Route path="/header" element={<Header />} />
       <Route path="*" element={<NotFound />}></Route>
     </Routes>

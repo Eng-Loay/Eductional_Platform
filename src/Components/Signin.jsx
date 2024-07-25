@@ -1,10 +1,47 @@
 import { useState } from "react";
 import google from "../assets/icon_google.png";
 import facebook from "../assets/icon_facebook.png";
-function Signin() {
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
+function Signin() {
+  const [userName, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const navigate = useNavigate();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const userData = {
+      userName,
+      password,
+    };
+
+    try {
+      const response = await fetch(
+        "http://acedify-001-site1.ltempurl.com/api/User/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log("User registered successfully:", data);
+      navigate("/form");
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+      setError("Failed to register. Please try again.");
+    }
+  };
   return (
     <>
       <h2 className="text-blue-800 font-bold text-3xl mb-4 text-center whitespace-nowrap">
@@ -13,13 +50,13 @@ function Signin() {
       <p className="text-grey-600 mb-6 text-center">
         Hey enter your details to sign in to your account
       </p>
-      <form className="space-y-4">
+      <form className="space-y-4" onSubmit={handleSubmit}>
         <div className="relative">
           <input
             type="email "
             placeholder="Enter Your Email"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={userName}
+            onChange={(e) => setUsername(e.target.value)}
             className="px-3 py-2 rounded border shadow w-full apperence-none focus:outline-none focus:shadow-outline leading-tight mb-4"
           />
           <input
@@ -47,6 +84,8 @@ function Signin() {
           </div>
         </div>
       </form>
+      {error && <div className="text-red-500 text-center mt-4">{error}</div>}
+
       <div className="mt-6 text-center">
         <p className="text-grey-600">Or Sign in with</p>
       </div>
@@ -63,9 +102,9 @@ function Signin() {
       <div className="mt-4 text-center">
         <p className="text-grey-500">
           Don&apos;t have an account?{" "}
-          <a href="" className="text-blue-500">
+          <Link to="/form2" className="text-blue-500">
             Signup Now
-          </a>
+          </Link>
         </p>
       </div>
     </>
