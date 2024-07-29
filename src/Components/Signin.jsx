@@ -19,16 +19,13 @@ function Signin() {
     };
 
     try {
-      const response = await fetch(
-        "http://acedify-001-site1.ltempurl.com/api/User/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(userData),
-        }
-      );
+      const response = await fetch("https://localhost:7186/api/User/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -53,8 +50,8 @@ function Signin() {
       <form className="space-y-4" onSubmit={handleSubmit}>
         <div className="relative">
           <input
-            type="email "
-            placeholder="Enter Your Email"
+            type="text "
+            placeholder="Enter Your UserName"
             value={userName}
             onChange={(e) => setUsername(e.target.value)}
             className="px-3 py-2 rounded border shadow w-full apperence-none focus:outline-none focus:shadow-outline leading-tight mb-4"

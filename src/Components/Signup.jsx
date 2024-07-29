@@ -24,17 +24,14 @@ function SignUp() {
     };
 
     try {
-      const response = await fetch(
-        "http://acedify-001-site1.ltempurl.com/api/User/register",
-        {
-          method: "POST",
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(userData),
-        }
-      );
+      const response = await fetch("https://localhost:7186/api/User/register", {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);

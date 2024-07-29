@@ -19,7 +19,9 @@ export const Header = () => {
           <Link className="button-style" to={"/form"}>
             Login
           </Link>
-          <button className="button-style">Register</button>
+          <Link className="button-style" to={"/form2"}>
+            Register
+          </Link>
         </div>
       </header>
     </>
